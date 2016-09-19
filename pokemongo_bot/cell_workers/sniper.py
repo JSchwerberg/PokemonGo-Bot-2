@@ -4,6 +4,7 @@ import time
 import json
 import requests
 import calendar
+import six
 
 from random import uniform
 from datetime import datetime, timedelta
@@ -43,7 +44,7 @@ class SniperSource(object):
             for result in results:
                 iv = result.get(self.mappings.iv.param)
                 id = result.get(self.mappings.id.param)
-                name = result.get(self.mappings.name.param)
+                name = result.get(six.text_type(self.mappings.name.param))
                 latitude = result.get(self.mappings.latitude.param)
                 longitude = result.get(self.mappings.longitude.param)
                 expiration = result.get(self.mappings.expiration.param)
